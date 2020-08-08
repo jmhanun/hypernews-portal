@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hyper News</title>
+</head>
+<body>
+<h2>Hyper news</h2>
+
+    <form action="/news/" method="get">
+        <input type="text" name="q" id="q">
+        <button type="submit">Search</button>
+    </form>
+
+    {% for date in order %}<h4>{{ date }}</h4>
+        <ul>
+            {% for new in all_news %}
+                {% if new.fecha == date %}
+                    <li><a a target="_blank" href="/news/{{ new.link }}/">{{ new.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <a href="/news/create/" target="_blank"> Create new new</a>
+</body>
+</html>
